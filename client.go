@@ -4,7 +4,6 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"io"
 	"net/http"
 	"net/http/cookiejar"
 	"net/url"
@@ -41,13 +40,6 @@ type Client struct {
 	URL             *url.URL
 	httpClient      *http.Client
 	authTokenHeader string
-}
-
-type Params struct {
-	body         io.Reader
-	query        map[string]string
-	header       map[string]string
-	setAuthToken bool
 }
 
 func GetClient(ctx context.Context, areaID string) (*Client, error) {
