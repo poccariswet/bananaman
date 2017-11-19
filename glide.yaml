@@ -1,0 +1,7 @@
+package: github.com/soeyusuke/bananaman
+import:
+- package: github.com/grafov/m3u8
+  version: ~0.10.0
+- package: golang.org/x/net
+  subpackages:
+  - html
