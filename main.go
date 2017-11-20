@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"time"
 )
@@ -18,6 +19,7 @@ const (
 var (
 	location *time.Location
 	homepath = os.Getenv("HOME")
+	cmdPath  string
 )
 
 func init() {
@@ -25,6 +27,11 @@ func init() {
 	location, err = time.LoadLocation("Asia/Tokyo")
 	if err != nil {
 		log.Fatalf("time package LoadLoaction err : %v\n", err)
+	}
+
+	cmdPath, err = exec.LookPath("ffmpeg")
+	if err != nil {
+		log.Fatal(err)
 	}
 
 	root := filepath.Join(homepath, "RadioOutput")

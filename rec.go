@@ -151,8 +151,8 @@ func ProgramDate(start time.Time) string {
 func AACDownload(list []string, aacDir string) error {
 	var (
 		judg bool
-		wg      sync.WaitGroup
-		ch     = make(chan struct{}, 64)
+		wg   sync.WaitGroup
+		ch   = make(chan struct{}, 64)
 	)
 
 	for _, v := range list {

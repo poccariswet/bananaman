@@ -19,7 +19,7 @@ func ConcatAACFile(ctx context.Context, aacDir, filename string) error {
 	}
 	defer os.RemoveAll(aacCopyDir)
 
-	err = Concat(ctx, aacDir)
+	err = concat(ctx, aacDir)
 	if err != nil {
 		return err
 	}
@@ -31,7 +31,7 @@ func ConcatAACFile(ctx context.Context, aacDir, filename string) error {
 }
 
 //concat aac files
-func Concat(ctx context.Context, aacDir string) error {
+func concat(ctx context.Context, aacDir string) error {
 	files, err := ioutil.ReadDir(aacDir)
 	if err != nil {
 		return err
@@ -90,12 +90,7 @@ func ResultAAC(ctx context.Context, filename string) error {
 	}
 	name := fmt.Sprintf("concat:%s", string(res[:len(res)-1]))
 
-	cmdPath, err := exec.LookPath("ffmpeg")
-	if err != nil {
-		return err
-	}
 	aacFile = filepath.Join(RadikoPath, "RadioOutput", filename)
-
 	cmd := exec.CommandContext(ctx, cmdPath, "-i", name, "-c", "copy", aacFile)
 	cmd.Dir = aacCopyDir
 	cmd.Run()
