@@ -23,7 +23,7 @@ func (i *Init) Run(args []string) int {
 	m := Mail{
 		From:  mail,
 		Pass:  passwd,
-		To:    "rainmaker0027pockets@ezweb.ne.jp",
+		To:    "banana@tbs.co.jp",
 		Rname: radioname,
 	}
 	bytes, _ := json.Marshal(m)
