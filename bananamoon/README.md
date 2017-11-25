@@ -1,4 +1,4 @@
-# bananaman
+# bananamoon
 
  This repository is able to get the file is timefree of radiko. <br> But if you are area is not *kanto*, you must set the premium member's mail and pass. <br>
  So, please set the environment variable.
@@ -15,14 +15,14 @@
 
 # Usage
 ```
-$ bananaman -id="stationID" -s="radio start time" -file=filename 
+$ bananamoon -id="stationID" -s="radio start time" -file=filename 
 ```
 <br>
 
 ex)
 
 ```
-$ bananaman -id=TBS -s=20171111010000 -file=bananamoonGold
+$ bananamoon -id=TBS -s=20171111010000 -file=bananamoonGold
 ```
 
 # Reference
