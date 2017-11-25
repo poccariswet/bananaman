@@ -1,0 +1,3 @@
+package: github.com/soeyusuke/bananaman/bananamail
+import:
+- package: github.com/mitchellh/cli
