@@ -35,8 +35,11 @@ Available commands are:
 
 ```
 
+If you want to use a new line, using "-" is as this mail use the a new line.
+
+
 ### init
-set up the your gmail address, **your gmail app pass**, radio name
+The first time, set up the your gmail address, **your gmail app pass**, radio name
 
 ```
 $ bananamail init 'your address' 'your pass' 'radio name'
