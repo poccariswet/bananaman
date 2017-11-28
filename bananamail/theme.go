@@ -10,7 +10,7 @@ func (t *Theme) Run(args []string) int {
 	if len(args) != 1 {
 		log.Fatalf("Please set text '*********' ")
 	}
-	text := args[0]
+	text := ParseMsg(args[0])
 
 	if err := GmailSend("テーマ", text); err != nil {
 		log.Fatal(err)
