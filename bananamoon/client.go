@@ -13,7 +13,6 @@ import (
 
 const (
 	EndPoint               = "https://radiko.jp"
-	defaultHTTPTimeout     = 100 * time.Second
 	radikoAppHeader        = "X-Radiko-App"
 	radikoAppVersionHeader = "X-Radiko-App-Version"
 	radikoUserHeader       = "X-Radiko-User"
@@ -33,7 +32,7 @@ const (
 )
 
 var (
-	httpClient = &http.Client{Timeout: defaultHTTPTimeout}
+	httpClient = &http.Client{Timeout: 100 * time.Second}
 )
 
 type Client struct {
