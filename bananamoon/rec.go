@@ -24,7 +24,6 @@ const (
 var (
 	aacFile    string
 	aacCopyDir string
-	RadikoPath = os.Getenv("HOME")
 )
 
 type Stations []Station

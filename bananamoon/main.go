@@ -97,7 +97,7 @@ func main() {
 
 	//ilistからaacファイルを取得し、TempDiraac()で作成したディレクトリに入れる
 	if err := AACDownload(list, aacDir); err != nil {
-		log.Fatalf("BulkDownload err : %v\n", err)
+		log.Fatalf("ACCDownload err : %v\n", err)
 	}
 
 	filename := fmt.Sprintf("%s_%s.%s", radiname, start, filetype)
