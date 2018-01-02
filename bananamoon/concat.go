@@ -45,7 +45,7 @@ func ConcatAACFile(ctx context.Context, aacDir, filename string) error {
 				}
 			}
 
-			if err := createAAC(fmt.Sprintf("%s/%s", tempdir, fname), buf[c:]); err != nil {
+			if err := createAAC(filepath.Join(tempdir, fname), buf[c:]); err != nil {
 				errChan <- err
 			}
 		}(f.Name(), tempdir)
