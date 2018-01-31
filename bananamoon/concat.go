@@ -117,7 +117,7 @@ func RemakeAAC(ctx context.Context, filename, fpath string) error {
 	name := fmt.Sprintf("concat:%s", string(res[:len(res)-1]))
 
 	aacFile := filepath.Join(homepath, "RadioOutput", filename)
-	cmd := exec.CommandContext(ctx, cmdPath, "-i", name, "-c", "copy", fmt.Sprintf("%s.aac", aacFile))
+	cmd := exec.CommandContext(ctx, cmdPath, "-i", name, "-c", "copy", aacFile)
 	cmd.Dir = fpath
 	cmd.Run()
 
