@@ -58,7 +58,7 @@ func main() {
 	defer ctxCancel()
 
 	//とりあえず
-	areaID := "JP13"
+	areaID := "JP13" //Tokyo
 	startTime, err := time.ParseInLocation(timeLayout, start, location)
 	if err != nil {
 		log.Fatalf("time pacakge ParseInLocation err : %v\n", err)
