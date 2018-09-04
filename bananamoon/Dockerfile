@@ -11,6 +11,9 @@ RUN wget http://johnvansickle.com/ffmpeg/releases/ffmpeg-release-64bit-static.ta
 RUN go get github.com/soeyusuke/bananaman && \
       go get github.com/grafov/m3u8
 
+RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
+
 
 CMD /bin/bash
 
