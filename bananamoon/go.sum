@@ -1,0 +1,3 @@
+github.com/grafov/m3u8 v0.0.0-20170812020831-d137fcd412b9 h1:4v7E5d4OIBbT2vhyvqRfTa4VPv8GkK1gYN1FuaPL0ZQ=
+github.com/grafov/m3u8 v0.0.0-20170812020831-d137fcd412b9/go.mod h1:PdjzaU/pJUo4jTIn2rcgMFs+HqBGl/sPJLr8BI0Xq/I=
+golang.org/x/net v0.0.0-20171026234051-7b572d500b07/go.mod h1:mL1N/T3taQHkDXs73rZJwtUhF3w3ftmwwsq0BUmARs4=

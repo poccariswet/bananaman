@@ -3,11 +3,12 @@ package main
 import (
 	"context"
 	"errors"
+	"fmt"
 	"net/http"
 	"path"
 	"time"
 
-	"github.com/grafov/m3u8"
+	m3u8 "github.com/poccariswet/m3u8-decoder"
 )
 
 func (c *Client) CreateM3U8Playlist(ctx context.Context, stationID string, start time.Time) (string, error) {
@@ -40,16 +41,19 @@ func (c *Client) CreateM3U8Playlist(ctx context.Context, stationID string, start
 	}
 	defer resp.Body.Close()
 
-	playlist, listtype, err := m3u8.DecodeFrom(resp.Body, true)
-	if err != nil || listtype != m3u8.MASTER {
+	playlist, err := m3u8.DecodeFrom(resp.Body)
+	fmt.Println(playlist)
+	if err != nil || !playlist.Master() {
 		return "", err
 	}
 
-	plist := playlist.(*m3u8.MasterPlaylist)
-	if plist == nil || len(plist.Variants) != 1 || plist.Variants[0] == nil {
+	plist := playlist.Segments[0].(*m3u8.VariantSegment)
+	fmt.Println(plist)
+	if plist == nil {
 		return "", errors.New("invalid m3u8 format")
 	}
-	return plist.Variants[0].URI, nil
+
+	return plist.URI, nil
 }
 
 // list　の生成
@@ -60,16 +64,16 @@ func Getlist(uri string) ([]string, error) {
 	}
 	defer resp.Body.Close()
 
-	playlist, listtype, err := m3u8.DecodeFrom(resp.Body, true)
-	if err != nil || listtype != m3u8.MEDIA {
+	playlist, err := m3u8.DecodeFrom(resp.Body)
+	if err != nil || playlist.Master() {
 		return nil, err
 	}
-	pl := playlist.(*m3u8.MediaPlaylist)
 
 	var list []string
-	for _, val := range pl.Segments {
-		if val != nil {
-			list = append(list, val.URI)
+	for _, val := range playlist.Segments {
+		v, ok := val.(*m3u8.InfSegment)
+		if v != nil && ok {
+			list = append(list, v.URI)
 		}
 	}
 	return list, nil
